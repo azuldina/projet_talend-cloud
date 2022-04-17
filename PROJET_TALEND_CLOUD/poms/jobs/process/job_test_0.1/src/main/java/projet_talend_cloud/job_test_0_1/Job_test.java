@@ -1505,21 +1505,11 @@ public class Job_test implements TalendJob {
 						public void limitLog4jByte() throws Exception {
 							StringBuilder log4jParamters_tLogRow_1 = new StringBuilder();
 							log4jParamters_tLogRow_1.append("Parameters:");
-							log4jParamters_tLogRow_1.append("BASIC_MODE" + " = " + "true");
+							log4jParamters_tLogRow_1.append("BASIC_MODE" + " = " + "false");
 							log4jParamters_tLogRow_1.append(" | ");
-							log4jParamters_tLogRow_1.append("TABLE_PRINT" + " = " + "false");
+							log4jParamters_tLogRow_1.append("TABLE_PRINT" + " = " + "true");
 							log4jParamters_tLogRow_1.append(" | ");
 							log4jParamters_tLogRow_1.append("VERTICAL" + " = " + "false");
-							log4jParamters_tLogRow_1.append(" | ");
-							log4jParamters_tLogRow_1.append("FIELDSEPARATOR" + " = " + "\"|\"");
-							log4jParamters_tLogRow_1.append(" | ");
-							log4jParamters_tLogRow_1.append("PRINT_HEADER" + " = " + "false");
-							log4jParamters_tLogRow_1.append(" | ");
-							log4jParamters_tLogRow_1.append("PRINT_UNIQUE_NAME" + " = " + "false");
-							log4jParamters_tLogRow_1.append(" | ");
-							log4jParamters_tLogRow_1.append("PRINT_COLNAMES" + " = " + "false");
-							log4jParamters_tLogRow_1.append(" | ");
-							log4jParamters_tLogRow_1.append("USE_FIXED_LENGTH" + " = " + "false");
 							log4jParamters_tLogRow_1.append(" | ");
 							log4jParamters_tLogRow_1.append("PRINT_CONTENT_WITH_LOG4J" + " = " + "true");
 							log4jParamters_tLogRow_1.append(" | ");
@@ -1536,9 +1526,143 @@ public class Job_test implements TalendJob {
 
 				///////////////////////
 
-				final String OUTPUT_FIELD_SEPARATOR_tLogRow_1 = "|";
-				java.io.PrintStream consoleOut_tLogRow_1 = null;
+				class Util_tLogRow_1 {
 
+					String[] des_top = { ".", ".", "-", "+" };
+
+					String[] des_head = { "|=", "=|", "-", "+" };
+
+					String[] des_bottom = { "'", "'", "-", "+" };
+
+					String name = "";
+
+					java.util.List<String[]> list = new java.util.ArrayList<String[]>();
+
+					int[] colLengths = new int[5];
+
+					public void addRow(String[] row) {
+
+						for (int i = 0; i < 5; i++) {
+							if (row[i] != null) {
+								colLengths[i] = Math.max(colLengths[i], row[i].length());
+							}
+						}
+						list.add(row);
+					}
+
+					public void setTableName(String name) {
+
+						this.name = name;
+					}
+
+					public StringBuilder format() {
+
+						StringBuilder sb = new StringBuilder();
+
+						sb.append(print(des_top));
+
+						int totals = 0;
+						for (int i = 0; i < colLengths.length; i++) {
+							totals = totals + colLengths[i];
+						}
+
+						// name
+						sb.append("|");
+						int k = 0;
+						for (k = 0; k < (totals + 4 - name.length()) / 2; k++) {
+							sb.append(' ');
+						}
+						sb.append(name);
+						for (int i = 0; i < totals + 4 - name.length() - k; i++) {
+							sb.append(' ');
+						}
+						sb.append("|\n");
+
+						// head and rows
+						sb.append(print(des_head));
+						for (int i = 0; i < list.size(); i++) {
+
+							String[] row = list.get(i);
+
+							java.util.Formatter formatter = new java.util.Formatter(new StringBuilder());
+
+							StringBuilder sbformat = new StringBuilder();
+							sbformat.append("|%1$-");
+							sbformat.append(colLengths[0]);
+							sbformat.append("s");
+
+							sbformat.append("|%2$-");
+							sbformat.append(colLengths[1]);
+							sbformat.append("s");
+
+							sbformat.append("|%3$-");
+							sbformat.append(colLengths[2]);
+							sbformat.append("s");
+
+							sbformat.append("|%4$-");
+							sbformat.append(colLengths[3]);
+							sbformat.append("s");
+
+							sbformat.append("|%5$-");
+							sbformat.append(colLengths[4]);
+							sbformat.append("s");
+
+							sbformat.append("|\n");
+
+							formatter.format(sbformat.toString(), (Object[]) row);
+
+							sb.append(formatter.toString());
+							if (i == 0)
+								sb.append(print(des_head)); // print the head
+						}
+
+						// end
+						sb.append(print(des_bottom));
+						return sb;
+					}
+
+					private StringBuilder print(String[] fillChars) {
+						StringBuilder sb = new StringBuilder();
+						// first column
+						sb.append(fillChars[0]);
+						for (int i = 0; i < colLengths[0] - fillChars[0].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+
+						for (int i = 0; i < colLengths[1] - fillChars[3].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+						for (int i = 0; i < colLengths[2] - fillChars[3].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+						for (int i = 0; i < colLengths[3] - fillChars[3].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+
+						// last column
+						for (int i = 0; i < colLengths[4] - fillChars[1].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[1]);
+						sb.append("\n");
+						return sb;
+					}
+
+					public boolean isTableEmpty() {
+						if (list.size() > 1)
+							return false;
+						return true;
+					}
+				}
+				Util_tLogRow_1 util_tLogRow_1 = new Util_tLogRow_1();
+				util_tLogRow_1.setTableName("tLogRow_1");
+				util_tLogRow_1
+						.addRow(new String[] { "id_sustainable_reporting_answer", "id_sustainable_reporting_interview",
+								"id_sustainable_reporting_section", "id_sustainable_reporting_question", "value", });
 				StringBuilder strBuffer_tLogRow_1 = null;
 				int nb_line_tLogRow_1 = 0;
 ///////////////////////    			
@@ -1968,58 +2092,37 @@ public class Job_test implements TalendJob {
 
 ///////////////////////		
 
-							strBuffer_tLogRow_1 = new StringBuilder();
+							String[] row_tLogRow_1 = new String[5];
 
 							if (out.id_sustainable_reporting_answer != null) { //
-
-								strBuffer_tLogRow_1.append(String.valueOf(out.id_sustainable_reporting_answer));
+								row_tLogRow_1[0] = String.valueOf(out.id_sustainable_reporting_answer);
 
 							} //
-
-							strBuffer_tLogRow_1.append("|");
 
 							if (out.id_sustainable_reporting_interview != null) { //
-
-								strBuffer_tLogRow_1.append(String.valueOf(out.id_sustainable_reporting_interview));
+								row_tLogRow_1[1] = String.valueOf(out.id_sustainable_reporting_interview);
 
 							} //
-
-							strBuffer_tLogRow_1.append("|");
 
 							if (out.id_sustainable_reporting_section != null) { //
-
-								strBuffer_tLogRow_1.append(String.valueOf(out.id_sustainable_reporting_section));
+								row_tLogRow_1[2] = String.valueOf(out.id_sustainable_reporting_section);
 
 							} //
-
-							strBuffer_tLogRow_1.append("|");
 
 							if (out.id_sustainable_reporting_question != null) { //
-
-								strBuffer_tLogRow_1.append(String.valueOf(out.id_sustainable_reporting_question));
+								row_tLogRow_1[3] = String.valueOf(out.id_sustainable_reporting_question);
 
 							} //
-
-							strBuffer_tLogRow_1.append("|");
 
 							if (out.value != null) { //
-
-								strBuffer_tLogRow_1.append(String.valueOf(out.value));
+								row_tLogRow_1[4] = String.valueOf(out.value);
 
 							} //
 
-							if (globalMap.get("tLogRow_CONSOLE") != null) {
-								consoleOut_tLogRow_1 = (java.io.PrintStream) globalMap.get("tLogRow_CONSOLE");
-							} else {
-								consoleOut_tLogRow_1 = new java.io.PrintStream(
-										new java.io.BufferedOutputStream(System.out));
-								globalMap.put("tLogRow_CONSOLE", consoleOut_tLogRow_1);
-							}
-							log.info("tLogRow_1 - Content of row " + (nb_line_tLogRow_1 + 1) + ": "
-									+ strBuffer_tLogRow_1.toString());
-							consoleOut_tLogRow_1.println(strBuffer_tLogRow_1.toString());
-							consoleOut_tLogRow_1.flush();
+							util_tLogRow_1.addRow(row_tLogRow_1);
 							nb_line_tLogRow_1++;
+							log.info("tLogRow_1 - Content of row " + nb_line_tLogRow_1 + ": "
+									+ TalendString.unionString("|", row_tLogRow_1));
 //////
 
 //////                    
@@ -2137,6 +2240,17 @@ public class Job_test implements TalendJob {
 				currentComponent = "tLogRow_1";
 
 //////
+
+				java.io.PrintStream consoleOut_tLogRow_1 = null;
+				if (globalMap.get("tLogRow_CONSOLE") != null) {
+					consoleOut_tLogRow_1 = (java.io.PrintStream) globalMap.get("tLogRow_CONSOLE");
+				} else {
+					consoleOut_tLogRow_1 = new java.io.PrintStream(new java.io.BufferedOutputStream(System.out));
+					globalMap.put("tLogRow_CONSOLE", consoleOut_tLogRow_1);
+				}
+
+				consoleOut_tLogRow_1.println(util_tLogRow_1.format().toString());
+				consoleOut_tLogRow_1.flush();
 //////
 				globalMap.put("tLogRow_1_NB_LINE", nb_line_tLogRow_1);
 				if (log.isInfoEnabled())
@@ -2401,7 +2515,7 @@ public class Job_test implements TalendJob {
 							log4jParamters_tDBConnection_1.append("USER" + " = " + "\"root\"");
 							log4jParamters_tDBConnection_1.append(" | ");
 							log4jParamters_tDBConnection_1.append("PASS" + " = " + String.valueOf(
-									"enc:routine.encryption.key.v1:a2gSN1zTdU2PppSQJXWtS0uxPBF6IN4BIhJi5MjRntfQ")
+									"enc:routine.encryption.key.v1:O0q9+vJ8krE5s4JgAfOJU1k+AK/NTOtO9/cp4mKNUadE")
 									.substring(0, 4) + "...");
 							log4jParamters_tDBConnection_1.append(" | ");
 							log4jParamters_tDBConnection_1.append("USE_SHARED_CONNECTION" + " = " + "false");
@@ -2441,7 +2555,7 @@ public class Job_test implements TalendJob {
 				String dbUser_tDBConnection_1 = "root";
 
 				final String decryptedPassword_tDBConnection_1 = routines.system.PasswordEncryptUtil
-						.decryptPassword("enc:routine.encryption.key.v1:1TGTiTO1Zysr8p3vCOaX254/PwFrbuMhSqtDXmXVJlCf");
+						.decryptPassword("enc:routine.encryption.key.v1:wr2dzaKUbV+KlG5qNMez7/Piub34an7VzAw/yV3En9XG");
 				String dbPwd_tDBConnection_1 = decryptedPassword_tDBConnection_1;
 
 				java.sql.Connection conn_tDBConnection_1 = null;
@@ -3275,6 +3389,6 @@ public class Job_test implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 107902 characters generated by Talend Cloud Data Management Platform on the
- * 17 avril 2022 à 18:43:47 CEST
+ * 112157 characters generated by Talend Cloud Data Management Platform on the
+ * 17 avril 2022 à 18:47:00 CEST
  ************************************************************************************************/
