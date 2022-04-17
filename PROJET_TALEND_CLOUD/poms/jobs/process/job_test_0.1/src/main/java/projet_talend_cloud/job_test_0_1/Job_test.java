@@ -347,6 +347,36 @@ public class Job_test implements TalendJob {
 		}
 	}
 
+	public void tDBInput_1_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tDBInput_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tMap_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tDBInput_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tLogRow_1_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tDBInput_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tPrejob_1_error(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -377,6 +407,14 @@ public class Job_test implements TalendJob {
 		talendJobLog_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tDBInput_1_onSubJobError(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
 	public void tPrejob_1_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -399,6 +437,1787 @@ public class Job_test implements TalendJob {
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
 				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
 
+	}
+
+	public static class outStruct implements routines.system.IPersistableRow<outStruct> {
+		final static byte[] commonByteArrayLock_PROJET_TALEND_CLOUD_Job_test = new byte[0];
+		static byte[] commonByteArray_PROJET_TALEND_CLOUD_Job_test = new byte[0];
+
+		public Integer id_sustainable_reporting_answer;
+
+		public Integer getId_sustainable_reporting_answer() {
+			return this.id_sustainable_reporting_answer;
+		}
+
+		public Integer id_sustainable_reporting_interview;
+
+		public Integer getId_sustainable_reporting_interview() {
+			return this.id_sustainable_reporting_interview;
+		}
+
+		public Integer id_sustainable_reporting_section;
+
+		public Integer getId_sustainable_reporting_section() {
+			return this.id_sustainable_reporting_section;
+		}
+
+		public Integer id_sustainable_reporting_question;
+
+		public Integer getId_sustainable_reporting_question() {
+			return this.id_sustainable_reporting_question;
+		}
+
+		public String value;
+
+		public String getValue() {
+			return this.value;
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (intNum == null) {
+				marshaller.writeByte(-1);
+			} else {
+				marshaller.writeByte(0);
+				marshaller.writeInt(intNum);
+			}
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJET_TALEND_CLOUD_Job_test.length) {
+					if (length < 1024 && commonByteArray_PROJET_TALEND_CLOUD_Job_test.length == 0) {
+						commonByteArray_PROJET_TALEND_CLOUD_Job_test = new byte[1024];
+					} else {
+						commonByteArray_PROJET_TALEND_CLOUD_Job_test = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_PROJET_TALEND_CLOUD_Job_test, 0, length);
+				strReturn = new String(commonByteArray_PROJET_TALEND_CLOUD_Job_test, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = unmarshaller.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJET_TALEND_CLOUD_Job_test.length) {
+					if (length < 1024 && commonByteArray_PROJET_TALEND_CLOUD_Job_test.length == 0) {
+						commonByteArray_PROJET_TALEND_CLOUD_Job_test = new byte[1024];
+					} else {
+						commonByteArray_PROJET_TALEND_CLOUD_Job_test = new byte[2 * length];
+					}
+				}
+				unmarshaller.readFully(commonByteArray_PROJET_TALEND_CLOUD_Job_test, 0, length);
+				strReturn = new String(commonByteArray_PROJET_TALEND_CLOUD_Job_test, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (str == null) {
+				marshaller.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				marshaller.writeInt(byteArray.length);
+				marshaller.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_PROJET_TALEND_CLOUD_Job_test) {
+
+				try {
+
+					int length = 0;
+
+					this.id_sustainable_reporting_answer = readInteger(dis);
+
+					this.id_sustainable_reporting_interview = readInteger(dis);
+
+					this.id_sustainable_reporting_section = readInteger(dis);
+
+					this.id_sustainable_reporting_question = readInteger(dis);
+
+					this.value = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+			synchronized (commonByteArrayLock_PROJET_TALEND_CLOUD_Job_test) {
+
+				try {
+
+					int length = 0;
+
+					this.id_sustainable_reporting_answer = readInteger(dis);
+
+					this.id_sustainable_reporting_interview = readInteger(dis);
+
+					this.id_sustainable_reporting_section = readInteger(dis);
+
+					this.id_sustainable_reporting_question = readInteger(dis);
+
+					this.value = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_answer, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_interview, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_section, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_question, dos);
+
+				// String
+
+				writeString(this.value, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public void writeData(org.jboss.marshalling.Marshaller dos) {
+			try {
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_answer, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_interview, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_section, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_question, dos);
+
+				// String
+
+				writeString(this.value, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("id_sustainable_reporting_answer=" + String.valueOf(id_sustainable_reporting_answer));
+			sb.append(",id_sustainable_reporting_interview=" + String.valueOf(id_sustainable_reporting_interview));
+			sb.append(",id_sustainable_reporting_section=" + String.valueOf(id_sustainable_reporting_section));
+			sb.append(",id_sustainable_reporting_question=" + String.valueOf(id_sustainable_reporting_question));
+			sb.append(",value=" + value);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		public String toLogString() {
+			StringBuilder sb = new StringBuilder();
+
+			if (id_sustainable_reporting_answer == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_sustainable_reporting_answer);
+			}
+
+			sb.append("|");
+
+			if (id_sustainable_reporting_interview == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_sustainable_reporting_interview);
+			}
+
+			sb.append("|");
+
+			if (id_sustainable_reporting_section == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_sustainable_reporting_section);
+			}
+
+			sb.append("|");
+
+			if (id_sustainable_reporting_question == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_sustainable_reporting_question);
+			}
+
+			sb.append("|");
+
+			if (value == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(value);
+			}
+
+			sb.append("|");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(outStruct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class row1Struct implements routines.system.IPersistableRow<row1Struct> {
+		final static byte[] commonByteArrayLock_PROJET_TALEND_CLOUD_Job_test = new byte[0];
+		static byte[] commonByteArray_PROJET_TALEND_CLOUD_Job_test = new byte[0];
+
+		public Integer id_sustainable_reporting_answer;
+
+		public Integer getId_sustainable_reporting_answer() {
+			return this.id_sustainable_reporting_answer;
+		}
+
+		public Integer id_sustainable_reporting_interview;
+
+		public Integer getId_sustainable_reporting_interview() {
+			return this.id_sustainable_reporting_interview;
+		}
+
+		public Integer id_sustainable_reporting_section;
+
+		public Integer getId_sustainable_reporting_section() {
+			return this.id_sustainable_reporting_section;
+		}
+
+		public Integer id_sustainable_reporting_question;
+
+		public Integer getId_sustainable_reporting_question() {
+			return this.id_sustainable_reporting_question;
+		}
+
+		public String value;
+
+		public String getValue() {
+			return this.value;
+		}
+
+		public String local_value;
+
+		public String getLocal_value() {
+			return this.local_value;
+		}
+
+		public String corporate_value;
+
+		public String getCorporate_value() {
+			return this.corporate_value;
+		}
+
+		public String slug;
+
+		public String getSlug() {
+			return this.slug;
+		}
+
+		public String comment;
+
+		public String getComment() {
+			return this.comment;
+		}
+
+		public String id_method;
+
+		public String getId_method() {
+			return this.id_method;
+		}
+
+		public String created_by;
+
+		public String getCreated_by() {
+			return this.created_by;
+		}
+
+		public String id_created_by;
+
+		public String getId_created_by() {
+			return this.id_created_by;
+		}
+
+		public String updated_by;
+
+		public String getUpdated_by() {
+			return this.updated_by;
+		}
+
+		public Integer id_updated_by;
+
+		public Integer getId_updated_by() {
+			return this.id_updated_by;
+		}
+
+		public java.util.Date created_at;
+
+		public java.util.Date getCreated_at() {
+			return this.created_at;
+		}
+
+		public java.util.Date updated_at;
+
+		public java.util.Date getUpdated_at() {
+			return this.updated_at;
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (intNum == null) {
+				marshaller.writeByte(-1);
+			} else {
+				marshaller.writeByte(0);
+				marshaller.writeInt(intNum);
+			}
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJET_TALEND_CLOUD_Job_test.length) {
+					if (length < 1024 && commonByteArray_PROJET_TALEND_CLOUD_Job_test.length == 0) {
+						commonByteArray_PROJET_TALEND_CLOUD_Job_test = new byte[1024];
+					} else {
+						commonByteArray_PROJET_TALEND_CLOUD_Job_test = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_PROJET_TALEND_CLOUD_Job_test, 0, length);
+				strReturn = new String(commonByteArray_PROJET_TALEND_CLOUD_Job_test, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = unmarshaller.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_PROJET_TALEND_CLOUD_Job_test.length) {
+					if (length < 1024 && commonByteArray_PROJET_TALEND_CLOUD_Job_test.length == 0) {
+						commonByteArray_PROJET_TALEND_CLOUD_Job_test = new byte[1024];
+					} else {
+						commonByteArray_PROJET_TALEND_CLOUD_Job_test = new byte[2 * length];
+					}
+				}
+				unmarshaller.readFully(commonByteArray_PROJET_TALEND_CLOUD_Job_test, 0, length);
+				strReturn = new String(commonByteArray_PROJET_TALEND_CLOUD_Job_test, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (str == null) {
+				marshaller.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				marshaller.writeInt(byteArray.length);
+				marshaller.write(byteArray);
+			}
+		}
+
+		private java.util.Date readDate(ObjectInputStream dis) throws IOException {
+			java.util.Date dateReturn = null;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				dateReturn = null;
+			} else {
+				dateReturn = new Date(dis.readLong());
+			}
+			return dateReturn;
+		}
+
+		private java.util.Date readDate(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException {
+			java.util.Date dateReturn = null;
+			int length = 0;
+			length = unmarshaller.readByte();
+			if (length == -1) {
+				dateReturn = null;
+			} else {
+				dateReturn = new Date(unmarshaller.readLong());
+			}
+			return dateReturn;
+		}
+
+		private void writeDate(java.util.Date date1, ObjectOutputStream dos) throws IOException {
+			if (date1 == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeLong(date1.getTime());
+			}
+		}
+
+		private void writeDate(java.util.Date date1, org.jboss.marshalling.Marshaller marshaller) throws IOException {
+			if (date1 == null) {
+				marshaller.writeByte(-1);
+			} else {
+				marshaller.writeByte(0);
+				marshaller.writeLong(date1.getTime());
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_PROJET_TALEND_CLOUD_Job_test) {
+
+				try {
+
+					int length = 0;
+
+					this.id_sustainable_reporting_answer = readInteger(dis);
+
+					this.id_sustainable_reporting_interview = readInteger(dis);
+
+					this.id_sustainable_reporting_section = readInteger(dis);
+
+					this.id_sustainable_reporting_question = readInteger(dis);
+
+					this.value = readString(dis);
+
+					this.local_value = readString(dis);
+
+					this.corporate_value = readString(dis);
+
+					this.slug = readString(dis);
+
+					this.comment = readString(dis);
+
+					this.id_method = readString(dis);
+
+					this.created_by = readString(dis);
+
+					this.id_created_by = readString(dis);
+
+					this.updated_by = readString(dis);
+
+					this.id_updated_by = readInteger(dis);
+
+					this.created_at = readDate(dis);
+
+					this.updated_at = readDate(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+			synchronized (commonByteArrayLock_PROJET_TALEND_CLOUD_Job_test) {
+
+				try {
+
+					int length = 0;
+
+					this.id_sustainable_reporting_answer = readInteger(dis);
+
+					this.id_sustainable_reporting_interview = readInteger(dis);
+
+					this.id_sustainable_reporting_section = readInteger(dis);
+
+					this.id_sustainable_reporting_question = readInteger(dis);
+
+					this.value = readString(dis);
+
+					this.local_value = readString(dis);
+
+					this.corporate_value = readString(dis);
+
+					this.slug = readString(dis);
+
+					this.comment = readString(dis);
+
+					this.id_method = readString(dis);
+
+					this.created_by = readString(dis);
+
+					this.id_created_by = readString(dis);
+
+					this.updated_by = readString(dis);
+
+					this.id_updated_by = readInteger(dis);
+
+					this.created_at = readDate(dis);
+
+					this.updated_at = readDate(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_answer, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_interview, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_section, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_question, dos);
+
+				// String
+
+				writeString(this.value, dos);
+
+				// String
+
+				writeString(this.local_value, dos);
+
+				// String
+
+				writeString(this.corporate_value, dos);
+
+				// String
+
+				writeString(this.slug, dos);
+
+				// String
+
+				writeString(this.comment, dos);
+
+				// String
+
+				writeString(this.id_method, dos);
+
+				// String
+
+				writeString(this.created_by, dos);
+
+				// String
+
+				writeString(this.id_created_by, dos);
+
+				// String
+
+				writeString(this.updated_by, dos);
+
+				// Integer
+
+				writeInteger(this.id_updated_by, dos);
+
+				// java.util.Date
+
+				writeDate(this.created_at, dos);
+
+				// java.util.Date
+
+				writeDate(this.updated_at, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public void writeData(org.jboss.marshalling.Marshaller dos) {
+			try {
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_answer, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_interview, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_section, dos);
+
+				// Integer
+
+				writeInteger(this.id_sustainable_reporting_question, dos);
+
+				// String
+
+				writeString(this.value, dos);
+
+				// String
+
+				writeString(this.local_value, dos);
+
+				// String
+
+				writeString(this.corporate_value, dos);
+
+				// String
+
+				writeString(this.slug, dos);
+
+				// String
+
+				writeString(this.comment, dos);
+
+				// String
+
+				writeString(this.id_method, dos);
+
+				// String
+
+				writeString(this.created_by, dos);
+
+				// String
+
+				writeString(this.id_created_by, dos);
+
+				// String
+
+				writeString(this.updated_by, dos);
+
+				// Integer
+
+				writeInteger(this.id_updated_by, dos);
+
+				// java.util.Date
+
+				writeDate(this.created_at, dos);
+
+				// java.util.Date
+
+				writeDate(this.updated_at, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("id_sustainable_reporting_answer=" + String.valueOf(id_sustainable_reporting_answer));
+			sb.append(",id_sustainable_reporting_interview=" + String.valueOf(id_sustainable_reporting_interview));
+			sb.append(",id_sustainable_reporting_section=" + String.valueOf(id_sustainable_reporting_section));
+			sb.append(",id_sustainable_reporting_question=" + String.valueOf(id_sustainable_reporting_question));
+			sb.append(",value=" + value);
+			sb.append(",local_value=" + local_value);
+			sb.append(",corporate_value=" + corporate_value);
+			sb.append(",slug=" + slug);
+			sb.append(",comment=" + comment);
+			sb.append(",id_method=" + id_method);
+			sb.append(",created_by=" + created_by);
+			sb.append(",id_created_by=" + id_created_by);
+			sb.append(",updated_by=" + updated_by);
+			sb.append(",id_updated_by=" + String.valueOf(id_updated_by));
+			sb.append(",created_at=" + String.valueOf(created_at));
+			sb.append(",updated_at=" + String.valueOf(updated_at));
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		public String toLogString() {
+			StringBuilder sb = new StringBuilder();
+
+			if (id_sustainable_reporting_answer == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_sustainable_reporting_answer);
+			}
+
+			sb.append("|");
+
+			if (id_sustainable_reporting_interview == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_sustainable_reporting_interview);
+			}
+
+			sb.append("|");
+
+			if (id_sustainable_reporting_section == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_sustainable_reporting_section);
+			}
+
+			sb.append("|");
+
+			if (id_sustainable_reporting_question == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_sustainable_reporting_question);
+			}
+
+			sb.append("|");
+
+			if (value == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(value);
+			}
+
+			sb.append("|");
+
+			if (local_value == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(local_value);
+			}
+
+			sb.append("|");
+
+			if (corporate_value == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(corporate_value);
+			}
+
+			sb.append("|");
+
+			if (slug == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(slug);
+			}
+
+			sb.append("|");
+
+			if (comment == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(comment);
+			}
+
+			sb.append("|");
+
+			if (id_method == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_method);
+			}
+
+			sb.append("|");
+
+			if (created_by == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(created_by);
+			}
+
+			sb.append("|");
+
+			if (id_created_by == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_created_by);
+			}
+
+			sb.append("|");
+
+			if (updated_by == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(updated_by);
+			}
+
+			sb.append("|");
+
+			if (id_updated_by == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(id_updated_by);
+			}
+
+			sb.append("|");
+
+			if (created_at == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(created_at);
+			}
+
+			sb.append("|");
+
+			if (updated_at == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(updated_at);
+			}
+
+			sb.append("|");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row1Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tDBInput_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+		globalMap.put("tDBInput_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { // start the resume
+				globalResumeTicket = true;
+
+				row1Struct row1 = new row1Struct();
+				outStruct out = new outStruct();
+
+				/**
+				 * [tLogRow_1 begin ] start
+				 */
+
+				ok_Hash.put("tLogRow_1", false);
+				start_Hash.put("tLogRow_1", System.currentTimeMillis());
+
+				currentComponent = "tLogRow_1";
+
+				runStat.updateStatAndLog(execStat, enableLogStash, resourceMap, iterateId, 0, 0, "out");
+
+				int tos_count_tLogRow_1 = 0;
+
+				if (log.isDebugEnabled())
+					log.debug("tLogRow_1 - " + ("Start to work."));
+				if (log.isDebugEnabled()) {
+					class BytesLimit65535_tLogRow_1 {
+						public void limitLog4jByte() throws Exception {
+							StringBuilder log4jParamters_tLogRow_1 = new StringBuilder();
+							log4jParamters_tLogRow_1.append("Parameters:");
+							log4jParamters_tLogRow_1.append("BASIC_MODE" + " = " + "true");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("TABLE_PRINT" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("VERTICAL" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("FIELDSEPARATOR" + " = " + "\"|\"");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("PRINT_HEADER" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("PRINT_UNIQUE_NAME" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("PRINT_COLNAMES" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("USE_FIXED_LENGTH" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("PRINT_CONTENT_WITH_LOG4J" + " = " + "true");
+							log4jParamters_tLogRow_1.append(" | ");
+							if (log.isDebugEnabled())
+								log.debug("tLogRow_1 - " + (log4jParamters_tLogRow_1));
+						}
+					}
+					new BytesLimit65535_tLogRow_1().limitLog4jByte();
+				}
+				if (enableLogStash) {
+					talendJobLog.addCM("tLogRow_1", "tLogRow_1", "tLogRow");
+					talendJobLogProcess(globalMap);
+				}
+
+				///////////////////////
+
+				final String OUTPUT_FIELD_SEPARATOR_tLogRow_1 = "|";
+				java.io.PrintStream consoleOut_tLogRow_1 = null;
+
+				StringBuilder strBuffer_tLogRow_1 = null;
+				int nb_line_tLogRow_1 = 0;
+///////////////////////    			
+
+				/**
+				 * [tLogRow_1 begin ] stop
+				 */
+
+				/**
+				 * [tMap_1 begin ] start
+				 */
+
+				ok_Hash.put("tMap_1", false);
+				start_Hash.put("tMap_1", System.currentTimeMillis());
+
+				currentComponent = "tMap_1";
+
+				runStat.updateStatAndLog(execStat, enableLogStash, resourceMap, iterateId, 0, 0, "row1");
+
+				int tos_count_tMap_1 = 0;
+
+				if (log.isDebugEnabled())
+					log.debug("tMap_1 - " + ("Start to work."));
+				if (log.isDebugEnabled()) {
+					class BytesLimit65535_tMap_1 {
+						public void limitLog4jByte() throws Exception {
+							StringBuilder log4jParamters_tMap_1 = new StringBuilder();
+							log4jParamters_tMap_1.append("Parameters:");
+							log4jParamters_tMap_1.append("LINK_STYLE" + " = " + "AUTO");
+							log4jParamters_tMap_1.append(" | ");
+							log4jParamters_tMap_1.append("TEMPORARY_DATA_DIRECTORY" + " = " + "");
+							log4jParamters_tMap_1.append(" | ");
+							log4jParamters_tMap_1.append("ROWS_BUFFER_SIZE" + " = " + "2000000");
+							log4jParamters_tMap_1.append(" | ");
+							log4jParamters_tMap_1.append("CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" + " = " + "true");
+							log4jParamters_tMap_1.append(" | ");
+							if (log.isDebugEnabled())
+								log.debug("tMap_1 - " + (log4jParamters_tMap_1));
+						}
+					}
+					new BytesLimit65535_tMap_1().limitLog4jByte();
+				}
+				if (enableLogStash) {
+					talendJobLog.addCM("tMap_1", "tMap_1", "tMap");
+					talendJobLogProcess(globalMap);
+				}
+
+// ###############################
+// # Lookup's keys initialization
+				int count_row1_tMap_1 = 0;
+
+// ###############################        
+
+// ###############################
+// # Vars initialization
+				class Var__tMap_1__Struct {
+				}
+				Var__tMap_1__Struct Var__tMap_1 = new Var__tMap_1__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+				int count_out_tMap_1 = 0;
+
+				outStruct out_tmp = new outStruct();
+// ###############################
+
+				/**
+				 * [tMap_1 begin ] stop
+				 */
+
+				/**
+				 * [tDBInput_1 begin ] start
+				 */
+
+				ok_Hash.put("tDBInput_1", false);
+				start_Hash.put("tDBInput_1", System.currentTimeMillis());
+
+				currentComponent = "tDBInput_1";
+
+				int tos_count_tDBInput_1 = 0;
+
+				if (log.isDebugEnabled())
+					log.debug("tDBInput_1 - " + ("Start to work."));
+				if (log.isDebugEnabled()) {
+					class BytesLimit65535_tDBInput_1 {
+						public void limitLog4jByte() throws Exception {
+							StringBuilder log4jParamters_tDBInput_1 = new StringBuilder();
+							log4jParamters_tDBInput_1.append("Parameters:");
+							log4jParamters_tDBInput_1.append("USE_EXISTING_CONNECTION" + " = " + "true");
+							log4jParamters_tDBInput_1.append(" | ");
+							log4jParamters_tDBInput_1.append("CONNECTION" + " = " + "tDBConnection_1");
+							log4jParamters_tDBInput_1.append(" | ");
+							log4jParamters_tDBInput_1.append("TABLE" + " = " + "\"sr_answer\"");
+							log4jParamters_tDBInput_1.append(" | ");
+							log4jParamters_tDBInput_1.append("QUERYSTORE" + " = " + "\"\"");
+							log4jParamters_tDBInput_1.append(" | ");
+							log4jParamters_tDBInput_1.append("QUERY" + " = "
+									+ "\"SELECT    `sr_answer`.`id_sustainable_reporting_answer`,    `sr_answer`.`id_sustainable_reporting_interview`,    `sr_answer`.`id_sustainable_reporting_section`,    `sr_answer`.`id_sustainable_reporting_question`,    `sr_answer`.`value`,    `sr_answer`.`local_value`,    `sr_answer`.`corporate_value`,    `sr_answer`.`slug`,    `sr_answer`.`comment`,    `sr_answer`.`id_method`,    `sr_answer`.`created_by`,    `sr_answer`.`id_created_by`,    `sr_answer`.`updated_by`,    `sr_answer`.`id_updated_by`,    `sr_answer`.`created_at`,    `sr_answer`.`updated_at` FROM `sr_answer`\"");
+							log4jParamters_tDBInput_1.append(" | ");
+							log4jParamters_tDBInput_1.append("ENABLE_STREAM" + " = " + "false");
+							log4jParamters_tDBInput_1.append(" | ");
+							log4jParamters_tDBInput_1.append("TRIM_ALL_COLUMN" + " = " + "false");
+							log4jParamters_tDBInput_1.append(" | ");
+							log4jParamters_tDBInput_1.append("TRIM_COLUMN" + " = " + "[{TRIM=" + ("false")
+									+ ", SCHEMA_COLUMN=" + ("id_sustainable_reporting_answer") + "}, {TRIM=" + ("false")
+									+ ", SCHEMA_COLUMN=" + ("id_sustainable_reporting_interview") + "}, {TRIM="
+									+ ("false") + ", SCHEMA_COLUMN=" + ("id_sustainable_reporting_section")
+									+ "}, {TRIM=" + ("false") + ", SCHEMA_COLUMN="
+									+ ("id_sustainable_reporting_question") + "}, {TRIM=" + ("false")
+									+ ", SCHEMA_COLUMN=" + ("value") + "}, {TRIM=" + ("false") + ", SCHEMA_COLUMN="
+									+ ("local_value") + "}, {TRIM=" + ("false") + ", SCHEMA_COLUMN="
+									+ ("corporate_value") + "}, {TRIM=" + ("false") + ", SCHEMA_COLUMN=" + ("slug")
+									+ "}, {TRIM=" + ("false") + ", SCHEMA_COLUMN=" + ("comment") + "}, {TRIM="
+									+ ("false") + ", SCHEMA_COLUMN=" + ("id_method") + "}, {TRIM=" + ("false")
+									+ ", SCHEMA_COLUMN=" + ("created_by") + "}, {TRIM=" + ("false") + ", SCHEMA_COLUMN="
+									+ ("id_created_by") + "}, {TRIM=" + ("false") + ", SCHEMA_COLUMN=" + ("updated_by")
+									+ "}, {TRIM=" + ("false") + ", SCHEMA_COLUMN=" + ("id_updated_by") + "}, {TRIM="
+									+ ("false") + ", SCHEMA_COLUMN=" + ("created_at") + "}, {TRIM=" + ("false")
+									+ ", SCHEMA_COLUMN=" + ("updated_at") + "}]");
+							log4jParamters_tDBInput_1.append(" | ");
+							log4jParamters_tDBInput_1.append("UNIFIED_COMPONENTS" + " = " + "tMysqlInput");
+							log4jParamters_tDBInput_1.append(" | ");
+							if (log.isDebugEnabled())
+								log.debug("tDBInput_1 - " + (log4jParamters_tDBInput_1));
+						}
+					}
+					new BytesLimit65535_tDBInput_1().limitLog4jByte();
+				}
+				if (enableLogStash) {
+					talendJobLog.addCM("tDBInput_1", "test_Connexion", "tMysqlInput");
+					talendJobLogProcess(globalMap);
+				}
+
+				java.util.Calendar calendar_tDBInput_1 = java.util.Calendar.getInstance();
+				calendar_tDBInput_1.set(0, 0, 0, 0, 0, 0);
+				java.util.Date year0_tDBInput_1 = calendar_tDBInput_1.getTime();
+				int nb_line_tDBInput_1 = 0;
+				java.sql.Connection conn_tDBInput_1 = null;
+				conn_tDBInput_1 = (java.sql.Connection) globalMap.get("conn_tDBConnection_1");
+
+				if (conn_tDBInput_1 != null) {
+					if (conn_tDBInput_1.getMetaData() != null) {
+
+						log.debug("tDBInput_1 - Uses an existing connection with username '"
+								+ conn_tDBInput_1.getMetaData().getUserName() + "'. Connection URL: "
+								+ conn_tDBInput_1.getMetaData().getURL() + ".");
+
+					}
+				}
+
+				java.sql.Statement stmt_tDBInput_1 = conn_tDBInput_1.createStatement();
+
+				String dbquery_tDBInput_1 = "SELECT \n  `sr_answer`.`id_sustainable_reporting_answer`, \n  `sr_answer`.`id_sustainable_reporting_interview`, \n  `sr_an"
+						+ "swer`.`id_sustainable_reporting_section`, \n  `sr_answer`.`id_sustainable_reporting_question`, \n  `sr_answer`.`value`, \n "
+						+ " `sr_answer`.`local_value`, \n  `sr_answer`.`corporate_value`, \n  `sr_answer`.`slug`, \n  `sr_answer`.`comment`, \n  `sr_an"
+						+ "swer`.`id_method`, \n  `sr_answer`.`created_by`, \n  `sr_answer`.`id_created_by`, \n  `sr_answer`.`updated_by`, \n  `sr_answ"
+						+ "er`.`id_updated_by`, \n  `sr_answer`.`created_at`, \n  `sr_answer`.`updated_at`\nFROM `sr_answer`";
+
+				log.debug("tDBInput_1 - Executing the query: '" + dbquery_tDBInput_1 + "'.");
+
+				globalMap.put("tDBInput_1_QUERY", dbquery_tDBInput_1);
+				java.sql.ResultSet rs_tDBInput_1 = null;
+
+				try {
+					rs_tDBInput_1 = stmt_tDBInput_1.executeQuery(dbquery_tDBInput_1);
+					java.sql.ResultSetMetaData rsmd_tDBInput_1 = rs_tDBInput_1.getMetaData();
+					int colQtyInRs_tDBInput_1 = rsmd_tDBInput_1.getColumnCount();
+
+					String tmpContent_tDBInput_1 = null;
+
+					log.debug("tDBInput_1 - Retrieving records from the database.");
+
+					while (rs_tDBInput_1.next()) {
+						nb_line_tDBInput_1++;
+
+						if (colQtyInRs_tDBInput_1 < 1) {
+							row1.id_sustainable_reporting_answer = null;
+						} else {
+
+							row1.id_sustainable_reporting_answer = rs_tDBInput_1.getInt(1);
+							if (rs_tDBInput_1.wasNull()) {
+								row1.id_sustainable_reporting_answer = null;
+							}
+						}
+						if (colQtyInRs_tDBInput_1 < 2) {
+							row1.id_sustainable_reporting_interview = null;
+						} else {
+
+							row1.id_sustainable_reporting_interview = rs_tDBInput_1.getInt(2);
+							if (rs_tDBInput_1.wasNull()) {
+								row1.id_sustainable_reporting_interview = null;
+							}
+						}
+						if (colQtyInRs_tDBInput_1 < 3) {
+							row1.id_sustainable_reporting_section = null;
+						} else {
+
+							row1.id_sustainable_reporting_section = rs_tDBInput_1.getInt(3);
+							if (rs_tDBInput_1.wasNull()) {
+								row1.id_sustainable_reporting_section = null;
+							}
+						}
+						if (colQtyInRs_tDBInput_1 < 4) {
+							row1.id_sustainable_reporting_question = null;
+						} else {
+
+							row1.id_sustainable_reporting_question = rs_tDBInput_1.getInt(4);
+							if (rs_tDBInput_1.wasNull()) {
+								row1.id_sustainable_reporting_question = null;
+							}
+						}
+						if (colQtyInRs_tDBInput_1 < 5) {
+							row1.value = null;
+						} else {
+
+							row1.value = routines.system.JDBCUtil.getString(rs_tDBInput_1, 5, false);
+						}
+						if (colQtyInRs_tDBInput_1 < 6) {
+							row1.local_value = null;
+						} else {
+
+							row1.local_value = routines.system.JDBCUtil.getString(rs_tDBInput_1, 6, false);
+						}
+						if (colQtyInRs_tDBInput_1 < 7) {
+							row1.corporate_value = null;
+						} else {
+
+							row1.corporate_value = routines.system.JDBCUtil.getString(rs_tDBInput_1, 7, false);
+						}
+						if (colQtyInRs_tDBInput_1 < 8) {
+							row1.slug = null;
+						} else {
+
+							row1.slug = routines.system.JDBCUtil.getString(rs_tDBInput_1, 8, false);
+						}
+						if (colQtyInRs_tDBInput_1 < 9) {
+							row1.comment = null;
+						} else {
+
+							row1.comment = routines.system.JDBCUtil.getString(rs_tDBInput_1, 9, false);
+						}
+						if (colQtyInRs_tDBInput_1 < 10) {
+							row1.id_method = null;
+						} else {
+
+							row1.id_method = routines.system.JDBCUtil.getString(rs_tDBInput_1, 10, false);
+						}
+						if (colQtyInRs_tDBInput_1 < 11) {
+							row1.created_by = null;
+						} else {
+
+							row1.created_by = routines.system.JDBCUtil.getString(rs_tDBInput_1, 11, false);
+						}
+						if (colQtyInRs_tDBInput_1 < 12) {
+							row1.id_created_by = null;
+						} else {
+
+							row1.id_created_by = routines.system.JDBCUtil.getString(rs_tDBInput_1, 12, false);
+						}
+						if (colQtyInRs_tDBInput_1 < 13) {
+							row1.updated_by = null;
+						} else {
+
+							row1.updated_by = routines.system.JDBCUtil.getString(rs_tDBInput_1, 13, false);
+						}
+						if (colQtyInRs_tDBInput_1 < 14) {
+							row1.id_updated_by = null;
+						} else {
+
+							row1.id_updated_by = rs_tDBInput_1.getInt(14);
+							if (rs_tDBInput_1.wasNull()) {
+								row1.id_updated_by = null;
+							}
+						}
+						if (colQtyInRs_tDBInput_1 < 15) {
+							row1.created_at = null;
+						} else {
+
+							if (rs_tDBInput_1.getString(15) != null) {
+								String dateString_tDBInput_1 = rs_tDBInput_1.getString(15);
+								if (!("0000-00-00").equals(dateString_tDBInput_1)
+										&& !("0000-00-00 00:00:00").equals(dateString_tDBInput_1)) {
+									row1.created_at = rs_tDBInput_1.getTimestamp(15);
+								} else {
+									row1.created_at = (java.util.Date) year0_tDBInput_1.clone();
+								}
+							} else {
+								row1.created_at = null;
+							}
+						}
+						if (colQtyInRs_tDBInput_1 < 16) {
+							row1.updated_at = null;
+						} else {
+
+							if (rs_tDBInput_1.getString(16) != null) {
+								String dateString_tDBInput_1 = rs_tDBInput_1.getString(16);
+								if (!("0000-00-00").equals(dateString_tDBInput_1)
+										&& !("0000-00-00 00:00:00").equals(dateString_tDBInput_1)) {
+									row1.updated_at = rs_tDBInput_1.getTimestamp(16);
+								} else {
+									row1.updated_at = (java.util.Date) year0_tDBInput_1.clone();
+								}
+							} else {
+								row1.updated_at = null;
+							}
+						}
+
+						log.debug("tDBInput_1 - Retrieving the record " + nb_line_tDBInput_1 + ".");
+
+						/**
+						 * [tDBInput_1 begin ] stop
+						 */
+
+						/**
+						 * [tDBInput_1 main ] start
+						 */
+
+						currentComponent = "tDBInput_1";
+
+						tos_count_tDBInput_1++;
+
+						/**
+						 * [tDBInput_1 main ] stop
+						 */
+
+						/**
+						 * [tDBInput_1 process_data_begin ] start
+						 */
+
+						currentComponent = "tDBInput_1";
+
+						/**
+						 * [tDBInput_1 process_data_begin ] stop
+						 */
+
+						/**
+						 * [tMap_1 main ] start
+						 */
+
+						currentComponent = "tMap_1";
+
+						if (runStat.update(execStat, enableLogStash, iterateId, 1, 1
+
+								, "row1", "tDBInput_1", "test_Connexion", "tMysqlInput", "tMap_1", "tMap_1", "tMap"
+
+						)) {
+							talendJobLogProcess(globalMap);
+						}
+
+						if (log.isTraceEnabled()) {
+							log.trace("row1 - " + (row1 == null ? "" : row1.toLogString()));
+						}
+
+						boolean hasCasePrimitiveKeyWithNull_tMap_1 = false;
+
+						// ###############################
+						// # Input tables (lookups)
+						boolean rejectedInnerJoin_tMap_1 = false;
+						boolean mainRowRejected_tMap_1 = false;
+
+						// ###############################
+						{ // start of Var scope
+
+							// ###############################
+							// # Vars tables
+
+							Var__tMap_1__Struct Var = Var__tMap_1;// ###############################
+							// ###############################
+							// # Output tables
+
+							out = null;
+
+// # Output table : 'out'
+							count_out_tMap_1++;
+
+							out_tmp.id_sustainable_reporting_answer = row1.id_sustainable_reporting_answer;
+							out_tmp.id_sustainable_reporting_interview = row1.id_sustainable_reporting_interview;
+							out_tmp.id_sustainable_reporting_section = row1.id_sustainable_reporting_section;
+							out_tmp.id_sustainable_reporting_question = row1.id_sustainable_reporting_question;
+							out_tmp.value = row1.value;
+							out = out_tmp;
+							log.debug("tMap_1 - Outputting the record " + count_out_tMap_1
+									+ " of the output table 'out'.");
+
+// ###############################
+
+						} // end of Var scope
+
+						rejectedInnerJoin_tMap_1 = false;
+
+						tos_count_tMap_1++;
+
+						/**
+						 * [tMap_1 main ] stop
+						 */
+
+						/**
+						 * [tMap_1 process_data_begin ] start
+						 */
+
+						currentComponent = "tMap_1";
+
+						/**
+						 * [tMap_1 process_data_begin ] stop
+						 */
+// Start of branch "out"
+						if (out != null) {
+
+							/**
+							 * [tLogRow_1 main ] start
+							 */
+
+							currentComponent = "tLogRow_1";
+
+							if (runStat.update(execStat, enableLogStash, iterateId, 1, 1
+
+									, "out", "tMap_1", "tMap_1", "tMap", "tLogRow_1", "tLogRow_1", "tLogRow"
+
+							)) {
+								talendJobLogProcess(globalMap);
+							}
+
+							if (log.isTraceEnabled()) {
+								log.trace("out - " + (out == null ? "" : out.toLogString()));
+							}
+
+///////////////////////		
+
+							strBuffer_tLogRow_1 = new StringBuilder();
+
+							if (out.id_sustainable_reporting_answer != null) { //
+
+								strBuffer_tLogRow_1.append(String.valueOf(out.id_sustainable_reporting_answer));
+
+							} //
+
+							strBuffer_tLogRow_1.append("|");
+
+							if (out.id_sustainable_reporting_interview != null) { //
+
+								strBuffer_tLogRow_1.append(String.valueOf(out.id_sustainable_reporting_interview));
+
+							} //
+
+							strBuffer_tLogRow_1.append("|");
+
+							if (out.id_sustainable_reporting_section != null) { //
+
+								strBuffer_tLogRow_1.append(String.valueOf(out.id_sustainable_reporting_section));
+
+							} //
+
+							strBuffer_tLogRow_1.append("|");
+
+							if (out.id_sustainable_reporting_question != null) { //
+
+								strBuffer_tLogRow_1.append(String.valueOf(out.id_sustainable_reporting_question));
+
+							} //
+
+							strBuffer_tLogRow_1.append("|");
+
+							if (out.value != null) { //
+
+								strBuffer_tLogRow_1.append(String.valueOf(out.value));
+
+							} //
+
+							if (globalMap.get("tLogRow_CONSOLE") != null) {
+								consoleOut_tLogRow_1 = (java.io.PrintStream) globalMap.get("tLogRow_CONSOLE");
+							} else {
+								consoleOut_tLogRow_1 = new java.io.PrintStream(
+										new java.io.BufferedOutputStream(System.out));
+								globalMap.put("tLogRow_CONSOLE", consoleOut_tLogRow_1);
+							}
+							log.info("tLogRow_1 - Content of row " + (nb_line_tLogRow_1 + 1) + ": "
+									+ strBuffer_tLogRow_1.toString());
+							consoleOut_tLogRow_1.println(strBuffer_tLogRow_1.toString());
+							consoleOut_tLogRow_1.flush();
+							nb_line_tLogRow_1++;
+//////
+
+//////                    
+
+///////////////////////    			
+
+							tos_count_tLogRow_1++;
+
+							/**
+							 * [tLogRow_1 main ] stop
+							 */
+
+							/**
+							 * [tLogRow_1 process_data_begin ] start
+							 */
+
+							currentComponent = "tLogRow_1";
+
+							/**
+							 * [tLogRow_1 process_data_begin ] stop
+							 */
+
+							/**
+							 * [tLogRow_1 process_data_end ] start
+							 */
+
+							currentComponent = "tLogRow_1";
+
+							/**
+							 * [tLogRow_1 process_data_end ] stop
+							 */
+
+						} // End of branch "out"
+
+						/**
+						 * [tMap_1 process_data_end ] start
+						 */
+
+						currentComponent = "tMap_1";
+
+						/**
+						 * [tMap_1 process_data_end ] stop
+						 */
+
+						/**
+						 * [tDBInput_1 process_data_end ] start
+						 */
+
+						currentComponent = "tDBInput_1";
+
+						/**
+						 * [tDBInput_1 process_data_end ] stop
+						 */
+
+						/**
+						 * [tDBInput_1 end ] start
+						 */
+
+						currentComponent = "tDBInput_1";
+
+					}
+				} finally {
+					if (rs_tDBInput_1 != null) {
+						rs_tDBInput_1.close();
+					}
+					if (stmt_tDBInput_1 != null) {
+						stmt_tDBInput_1.close();
+					}
+				}
+
+				globalMap.put("tDBInput_1_NB_LINE", nb_line_tDBInput_1);
+
+				log.debug("tDBInput_1 - Retrieved records count: " + nb_line_tDBInput_1 + " .");
+
+				if (log.isDebugEnabled())
+					log.debug("tDBInput_1 - " + ("Done."));
+
+				ok_Hash.put("tDBInput_1", true);
+				end_Hash.put("tDBInput_1", System.currentTimeMillis());
+
+				/**
+				 * [tDBInput_1 end ] stop
+				 */
+
+				/**
+				 * [tMap_1 end ] start
+				 */
+
+				currentComponent = "tMap_1";
+
+// ###############################
+// # Lookup hashes releasing
+// ###############################      
+				log.debug("tMap_1 - Written records count in the table 'out': " + count_out_tMap_1 + ".");
+
+				if (runStat.updateStatAndLog(execStat, enableLogStash, resourceMap, iterateId, "row1", 2, 0,
+						"tDBInput_1", "test_Connexion", "tMysqlInput", "tMap_1", "tMap_1", "tMap", "output")) {
+					talendJobLogProcess(globalMap);
+				}
+
+				if (log.isDebugEnabled())
+					log.debug("tMap_1 - " + ("Done."));
+
+				ok_Hash.put("tMap_1", true);
+				end_Hash.put("tMap_1", System.currentTimeMillis());
+
+				/**
+				 * [tMap_1 end ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 end ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+//////
+//////
+				globalMap.put("tLogRow_1_NB_LINE", nb_line_tLogRow_1);
+				if (log.isInfoEnabled())
+					log.info("tLogRow_1 - " + ("Printed row count: ") + (nb_line_tLogRow_1) + ("."));
+
+///////////////////////    			
+
+				if (runStat.updateStatAndLog(execStat, enableLogStash, resourceMap, iterateId, "out", 2, 0, "tMap_1",
+						"tMap_1", "tMap", "tLogRow_1", "tLogRow_1", "tLogRow", "output")) {
+					talendJobLogProcess(globalMap);
+				}
+
+				if (log.isDebugEnabled())
+					log.debug("tLogRow_1 - " + ("Done."));
+
+				ok_Hash.put("tLogRow_1", true);
+				end_Hash.put("tLogRow_1", System.currentTimeMillis());
+
+				/**
+				 * [tLogRow_1 end ] stop
+				 */
+
+			} // end the resume
+
+		} catch (java.lang.Exception e) {
+
+			if (!(e instanceof TalendException)) {
+				log.fatal(currentComponent + " " + e.getMessage(), e);
+			}
+
+			TalendException te = new TalendException(e, currentComponent, globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			runStat.stopThreadStat();
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tDBInput_1 finally ] start
+				 */
+
+				currentComponent = "tDBInput_1";
+
+				/**
+				 * [tDBInput_1 finally ] stop
+				 */
+
+				/**
+				 * [tMap_1 finally ] start
+				 */
+
+				currentComponent = "tMap_1";
+
+				/**
+				 * [tMap_1 finally ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 finally ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				/**
+				 * [tLogRow_1 finally ] stop
+				 */
+
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tDBInput_1_SUBPROCESS_STATE", 1);
 	}
 
 	public void tPrejob_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -582,7 +2401,7 @@ public class Job_test implements TalendJob {
 							log4jParamters_tDBConnection_1.append("USER" + " = " + "\"root\"");
 							log4jParamters_tDBConnection_1.append(" | ");
 							log4jParamters_tDBConnection_1.append("PASS" + " = " + String.valueOf(
-									"enc:routine.encryption.key.v1:cJ3n5ykWpg6AczHx8+GFW3WNjwb/ALJuVe5Dvz7BwOcm")
+									"enc:routine.encryption.key.v1:a2gSN1zTdU2PppSQJXWtS0uxPBF6IN4BIhJi5MjRntfQ")
 									.substring(0, 4) + "...");
 							log4jParamters_tDBConnection_1.append(" | ");
 							log4jParamters_tDBConnection_1.append("USE_SHARED_CONNECTION" + " = " + "false");
@@ -622,7 +2441,7 @@ public class Job_test implements TalendJob {
 				String dbUser_tDBConnection_1 = "root";
 
 				final String decryptedPassword_tDBConnection_1 = routines.system.PasswordEncryptUtil
-						.decryptPassword("enc:routine.encryption.key.v1:R4JtwS9WMzngFIlCQas/tQqHLNuPhRXRFuZ++ockNXA5");
+						.decryptPassword("enc:routine.encryption.key.v1:1TGTiTO1Zysr8p3vCOaX254/PwFrbuMhSqtDXmXVJlCf");
 				String dbPwd_tDBConnection_1 = decryptedPassword_tDBConnection_1;
 
 				java.sql.Connection conn_tDBConnection_1 = null;
@@ -1271,6 +3090,19 @@ public class Job_test implements TalendJob {
 
 		this.globalResumeTicket = false;// to run others jobs
 
+		try {
+			errorCode = null;
+			tDBInput_1Process(globalMap);
+			if (!"failure".equals(status)) {
+				status = "end";
+			}
+		} catch (TalendException e_tDBInput_1) {
+			globalMap.put("tDBInput_1_SUBPROCESS_STATE", -1);
+
+			e_tDBInput_1.printStackTrace();
+
+		}
+
 		this.globalResumeTicket = true;// to run tPostJob
 
 		end = System.currentTimeMillis();
@@ -1443,6 +3275,6 @@ public class Job_test implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 52013 characters generated by Talend Cloud Data Management Platform on the 17
- * avril 2022 à 18:42:16 CEST
+ * 107902 characters generated by Talend Cloud Data Management Platform on the
+ * 17 avril 2022 à 18:43:47 CEST
  ************************************************************************************************/
