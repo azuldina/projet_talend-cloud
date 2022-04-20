@@ -12,6 +12,10 @@
     "id" : "_KbaWIL5sEeyQdqZwZQ-EaQ",
     "version" : "Latest",
     "type" : "property"
+  }, {
+    "id" : "_KbaWIL5sEeyQdqZwZQ-EaQ - sr_answer",
+    "version" : "Latest",
+    "type" : "schema"
   } ]
 }, {
   "baseItem" : {
