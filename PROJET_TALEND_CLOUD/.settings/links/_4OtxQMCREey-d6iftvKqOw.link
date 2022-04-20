@@ -1,0 +1,48 @@
+{
+  "itemId" : "_4OtxQMCREey-d6iftvKqOw",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_rq-5YL5sEeyQdqZwZQ-EaQ",
+    "parameterList" : [ {
+      "id" : "_rrLts75sEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_AdditionalParams"
+    }, {
+      "id" : "_rrLtsb5sEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_Database"
+    }, {
+      "id" : "_rrLttr5sEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_Login"
+    }, {
+      "id" : "_rrLttL5sEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_Password"
+    }, {
+      "id" : "_rrLttb5sEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_Port"
+    }, {
+      "id" : "_rrLtsr5sEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_Server"
+    } ]
+  }, {
+    "contextName" : "prod",
+    "repoId" : "_rq-5YL5sEeyQdqZwZQ-EaQ",
+    "parameterList" : [ {
+      "id" : "_HCVaI75vEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_AdditionalParams"
+    }, {
+      "id" : "_HCVaIb5vEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_Database"
+    }, {
+      "id" : "_HCVaJr5vEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_Login"
+    }, {
+      "id" : "_HCVaJL5vEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_Password"
+    }, {
+      "id" : "_HCVaJb5vEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_Port"
+    }, {
+      "id" : "_HCVaIr5vEeyQdqZwZQ-EaQ",
+      "name" : "connection_Mysql_Server"
+    } ]
+  } ]
+}
