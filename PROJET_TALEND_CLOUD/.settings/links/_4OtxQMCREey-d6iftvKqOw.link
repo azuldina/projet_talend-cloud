@@ -5,44 +5,44 @@
     "repoId" : "_rq-5YL5sEeyQdqZwZQ-EaQ",
     "parameterList" : [ {
       "id" : "_rrLts75sEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_AdditionalParams"
+      "name" : "connection_MariaDB_AdditionalParams"
     }, {
       "id" : "_rrLtsb5sEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_Database"
+      "name" : "connection_MariaDB_Database"
     }, {
       "id" : "_rrLttr5sEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_Login"
+      "name" : "connection_MariaDB_Login"
     }, {
       "id" : "_rrLttL5sEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_Password"
+      "name" : "connection_MariaDB_Password"
     }, {
       "id" : "_rrLttb5sEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_Port"
+      "name" : "connection_MariaDB_Port"
     }, {
       "id" : "_rrLtsr5sEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_Server"
+      "name" : "connection_MariaDB_Server"
     } ]
   }, {
     "contextName" : "prod",
     "repoId" : "_rq-5YL5sEeyQdqZwZQ-EaQ",
     "parameterList" : [ {
       "id" : "_HCVaI75vEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_AdditionalParams"
+      "name" : "connection_MariaDB_AdditionalParams"
     }, {
       "id" : "_HCVaIb5vEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_Database"
+      "name" : "connection_MariaDB_Database"
     }, {
       "id" : "_HCVaJr5vEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_Login"
+      "name" : "connection_MariaDB_Login"
     }, {
       "id" : "_HCVaJL5vEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_Password"
+      "name" : "connection_MariaDB_Password"
     }, {
       "id" : "_HCVaJb5vEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_Port"
+      "name" : "connection_MariaDB_Port"
     }, {
       "id" : "_HCVaIr5vEeyQdqZwZQ-EaQ",
-      "name" : "connection_Mysql_Server"
+      "name" : "connection_MariaDB_Server"
     } ]
   } ]
 }
